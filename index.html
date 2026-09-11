@@ -1,0 +1,20 @@
+<!doctype html><html lang="ja"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111"><title>HEROINES LIVE</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f5f7;color:#151518;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif}
+header{background:#111;color:white;padding:25px 16px 18px;position:sticky;top:0;z-index:5}.wrap{max-width:720px;margin:auto}
+h1{margin:0;font-size:25px;font-weight:900}.sub{font-size:12px;color:#aaa;margin-top:4px}input{width:100%;margin-top:14px;padding:12px;border-radius:12px;border:1px solid #444;background:#242428;color:#fff}
+main{padding:14px}.filters{display:flex;gap:8px;overflow:auto}.f{border:0;background:#fff;padding:9px 14px;border-radius:999px;font-weight:800;white-space:nowrap}.on{background:#111!important;color:#fff}.month{font-size:14px;font-weight:900;margin:20px 2px 8px}
+.card{background:#fff;border-radius:17px;padding:15px;margin:9px 0;box-shadow:0 2px 10px #0001}.head{display:flex;justify-content:space-between;gap:8px}.date{font-size:18px;font-weight:900}.dow{font-size:12px;color:#777}.badge{font-size:11px;padding:5px 8px;border-radius:8px;background:#eee;white-space:nowrap}.ok{background:#eee6ff;color:#6335b8}.group{font-size:16px;font-weight:900;margin-top:9px}.title{font-size:14px;margin-top:3px}.venue{font-size:13px;color:#555;margin:9px 0 12px}.btn{display:block;text-align:center;text-decoration:none;background:#111;color:#fff;border-radius:11px;padding:11px;font-weight:800;font-size:13px}.note{font-size:11px;color:#888;line-height:1.7;margin:20px 3px}.empty{text-align:center;color:#888;padding:40px 10px}
+</style></head><body>
+<header><div class="wrap"><h1>🎤 HEROINES LIVE</h1><div class="sub">北海道を最優先｜2026.09 → 2027.01</div><input id="q" placeholder="グループ・会場を検索"></div></header>
+<main class="wrap"><div class="filters">
+<button class="f on" data-f="all">すべて</button><button class="f" data-f="hokkaido">📍北海道</button><button class="f" data-f="sapporo">札幌</button><button class="f" data-f="otaru">小樽</button><button class="f" data-f="tokyo">東京</button></div>
+<div id="list"></div><div class="note">掲載情報は2026年9月11日時点で確認したものです。販売状況・出演者・会場等は変更される場合があります。購入前に公式販売ページをご確認ください。2027年1月までの未発表公演は推測で掲載していません。</div></main>
+<script>
+let data=[],filter='all';const dow=['日','月','火','水','木','金','土'],q=document.getElementById('q'),list=document.getElementById('list');
+function match(e){if(filter==='all')return true;if(filter==='hokkaido')return e.area.includes('北海道');if(filter==='sapporo')return e.area.includes('札幌');if(filter==='otaru')return e.area.includes('小樽');if(filter==='tokyo')return e.area==='東京'}
+function render(){const s=q.value.toLowerCase().trim();let last='',a=data.filter(e=>match(e)&&(`${e.group} ${e.title} ${e.venue} ${e.area}`).toLowerCase().includes(s));if(!a.length){list.innerHTML='<div class="empty">該当する公演はありません</div>';return}list.innerHTML=a.map(e=>{const d=new Date(e.date+'T00:00:00'),m=e.date.slice(0,7),h=m!==last?`<div class="month">${d.getFullYear()}年${d.getMonth()+1}月</div>`:'';last=m;return `${h}<article class="card"><div class="head"><div class="date">${d.getMonth()+1}/${d.getDate()} <span class="dow">(${dow[d.getDay()]})</span></div><span class="badge ${e.status==='販売中'?'ok':''}">${e.status}</span></div><div class="group">${e.group}</div><div class="title">${e.title}</div><div class="venue">📍 ${e.venue}　${e.area}</div><a class="btn" href="${e.url}" target="_blank" rel="noopener">🎫 ${e.source}で見る</a></article>`}).join('')}
+document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('on'));b.classList.add('on');filter=b.dataset.f;render()});q.oninput=render;fetch('./events.json').then(r=>r.json()).then(x=>{data=x;render()});
+</script></body></html>
