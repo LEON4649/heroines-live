@@ -1,5 +1,285 @@
 [
   {
+    "date": "2026-09-12",
+    "group": "TENRIN",
+    "title": "TENRIN3大都市ツアー - 転地開闢 -",
+    "venue": "16:30",
+    "area": "東京",
+    "status": "販売中",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/TENRIN-Tour2026",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/TENRIN-Tour2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "group": "iLiFE!",
+    "title": "MEGALiFE! 後日特典会",
+    "venue": "12:30",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/megalife-gojitsu",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/megalife-gojitsu"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "group": "iLiFE!",
+    "title": "MEGALiFE! 後日特典会",
+    "venue": "13:50",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/megalife-gojitsu",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/megalife-gojitsu"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "group": "iLiFE!",
+    "title": "MEGALiFE! 後日特典会",
+    "venue": "15:10",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/megalife-gojitsu",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/megalife-gojitsu"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "group": "iLiFE!",
+    "title": "MEGALiFE! 後日特典会",
+    "venue": "17:00",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/megalife-gojitsu",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/megalife-gojitsu"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "group": "iLiFE!",
+    "title": "MEGALiFE! 後日特典会",
+    "venue": "18:20",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/megalife-gojitsu",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/megalife-gojitsu"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "group": "iLiFE!",
+    "title": "MEGALiFE! 後日特典会",
+    "venue": "19:40",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/megalife-gojitsu",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/megalife-gojitsu"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "group": "iON!",
+    "title": "iON!主催ライブ『ON LiVE!』",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/onlive2",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/onlive2"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-13",
+    "group": "iLiFE!",
+    "title": "iLiFE! 浴衣特典会",
+    "venue": "12:30",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ilife-yukata2026",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ilife-yukata2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-13",
+    "group": "iLiFE!",
+    "title": "iLiFE! 浴衣特典会",
+    "venue": "13:50",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ilife-yukata2026",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ilife-yukata2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-13",
+    "group": "iLiFE!",
+    "title": "iLiFE! 浴衣特典会",
+    "venue": "15:10",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ilife-yukata2026",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ilife-yukata2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-13",
+    "group": "iLiFE!",
+    "title": "iLiFE! 浴衣特典会",
+    "venue": "17:00",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ilife-yukata2026",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ilife-yukata2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-13",
+    "group": "iLiFE!",
+    "title": "iLiFE! 浴衣特典会",
+    "venue": "18:20",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ilife-yukata2026",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ilife-yukata2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-13",
+    "group": "iLiFE!",
+    "title": "iLiFE! 浴衣特典会",
+    "venue": "19:40",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ilife-yukata2026",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ilife-yukata2026"
+      }
+    ]
+  },
+  {
     "date": "2026-09-13",
     "group": "のんふぃく！",
     "title": "FICTIONAL JAPAN ROAD 2026 北海道",
@@ -7,17 +287,314 @@
     "area": "北海道・札幌",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/event/Nonfic-FICTIONALJAPANROAD2026"
+    "url": "https://ticketdive.com/event/Nonfic-FICTIONALJAPANROAD2026",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/Nonfic-FICTIONALJAPANROAD2026"
+      }
+    ]
   },
   {
-    "date": "2026-09-20",
-    "group": "HEROINES",
-    "title": "HEROINES SILVER Day2",
-    "venue": "ステラボール",
+    "date": "2026-09-13",
+    "group": "のんふぃく！",
+    "title": "のんふぃく！全国ツアー 『FICTIONAL JAPAN ROAD 2026』",
+    "venue": "18:00",
+    "area": "北海道・札幌",
+    "status": "販売中",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/Nonfic-FICTIONALJAPANROAD2026",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/Nonfic-FICTIONALJAPANROAD2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-14",
+    "group": "Ill",
+    "title": "IDOL STORM",
+    "venue": "WOMB LIVE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/IDOLSTORM_0914",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/IDOLSTORM_0914"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-14",
+    "group": "TENRIN",
+    "title": "霞あげは後日特典会",
+    "venue": "15:30",
     "area": "東京",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/event/heroines_silver_day2"
+    "url": "https://ticketdive.com/event/ageha_gojitu",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ageha_gojitu"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-14",
+    "group": "TENRIN",
+    "title": "霞あげは後日特典会",
+    "venue": "19:00",
+    "area": "東京",
+    "status": "販売中",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ageha_gojitu",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ageha_gojitu"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-15",
+    "group": "夜光性アミューズ",
+    "title": "夜光性アミューズ Summer Tour 2026 「NIGHT DAYLIGHT〜ここで僕らは煌めき続ける〜」",
+    "venue": "17:30",
+    "area": "東京",
+    "status": "販売中",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/Yoruami-SummerTour2026",
+    "types": [
+      "tour",
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/Yoruami-SummerTour2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-16",
+    "group": "i-COL",
+    "title": "HA☆PI☆BA - i-COL 5th AnniversaryLive -",
+    "venue": "Zepp DiverCity",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/iCOL-5thAnniversary",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/iCOL-5thAnniversary"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-17",
+    "group": "Ill",
+    "title": "Ill×TENRIN×AdamLilith 3MANLIVE 『イルテンリリス』",
+    "venue": "Veats SHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/3man_0917",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/3man_0917"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-17",
+    "group": "のんふぃく！",
+    "title": "SPECIAL 6MAN LIVE",
+    "venue": "Kanadevia Hall",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/260917-SPECIAL6MANLIVE",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/260917-SPECIAL6MANLIVE"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-18",
+    "group": "Ill",
+    "title": "マーキュロ主催『グラン・ギニュルー』Vol.32",
+    "venue": "WOMBLIVE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/260918m",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/260918m"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-18",
+    "group": "MEGAFON",
+    "title": "Ms.♀BOX!!!",
+    "venue": "Spotify O-WEST",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/Ms_BOX",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/Ms_BOX"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-18",
+    "group": "夜光性アミューズ",
+    "title": "Mr.♂BOX!!!",
+    "venue": "duo MUSIC EXCHANGE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/Mr_BOX",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/Mr_BOX"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-19",
+    "group": "のんふぃく！",
+    "title": "HEROINES SILVER Day1",
+    "venue": "立川ステージガーデン",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/260919-HEROINESSILVER",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/260919-HEROINESSILVER"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-20",
+    "group": "HEROINES / のんふぃく！",
+    "title": "HEROINES SILVER Day2",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/heroines_silver_day2",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/heroines_silver_day2"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-20",
+    "group": "iLiFE!",
+    "title": "iii!",
+    "venue": "立川ステージガーデン",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/iii-260920",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/iii-260920"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-21",
+    "group": "のんふぃく！",
+    "title": "のんふぃく！×MEGAFON 2MAN LIVE「めがふぃく！」",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/megafiku",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/megafiku"
+      }
+    ]
   },
   {
     "date": "2026-09-21",
@@ -27,7 +604,253 @@
     "area": "東京",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/"
+    "url": "https://ticketdive.com/",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-21",
+    "group": "テンシンランマン",
+    "title": "HEROINES LIVE!",
+    "venue": "VeatsSHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/0921_HEROINES",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/0921_HEROINES"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-21",
+    "group": "ドレスコード",
+    "title": "HEROINES WHITE",
+    "venue": "VeatsSHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/WHITE_0921",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/WHITE_0921"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-21",
+    "group": "夜光性アミューズ",
+    "title": "HEROINES主催公演「461078~よるてんなっぱ~」",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/461078_0921",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/461078_0921"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-22",
+    "group": "ナナコロビヤオキ",
+    "title": "ナナコロ東京単独公演",
+    "venue": "harevutai",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/78yokyo_0922",
+    "types": [
+      "oneman"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/78yokyo_0922"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-23",
+    "group": "AdamLilith",
+    "title": "サークルライチ主催『サブカル』",
+    "venue": "WOMBLIVE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/260923s",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/260923s"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24",
+    "group": "iON!",
+    "title": "iON!初Zepp5大都市ツアー 『ON!VOYAGE!!』",
+    "venue": "17:00",
+    "area": "東京",
+    "status": "販売中",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/iON-ONVOYAGE",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/iON-ONVOYAGE"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24",
+    "group": "ドレスコード",
+    "title": "ドレスコード×STAiNY 2MAN LIVE「ステイ♡コード」",
+    "venue": "VeatsSHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/dresscode_stainy",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/dresscode_stainy"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-25",
+    "group": "AdamLilith",
+    "title": "愛染乱舞 Dance until I'm dead",
+    "venue": "Veats SHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/Rizu_BDL",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/Rizu_BDL"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-26",
+    "group": "MEGAFON",
+    "title": "MEGAFON単独公演「線香花火が落ちるまで」",
+    "venue": "Veats SHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/isshoninatsusugoshitekurete_arigatou",
+    "types": [
+      "oneman"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/isshoninatsusugoshitekurete_arigatou"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-26",
+    "group": "TENRIN",
+    "title": "710",
+    "venue": "Veats SHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/NANA_TEN",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/NANA_TEN"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-27",
+    "group": "chuLa",
+    "title": "ちゅらディーク",
+    "venue": "渋谷音楽堂",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/prV77Cy3rFde8cIG05jJ",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/prV77Cy3rFde8cIG05jJ"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-28",
+    "group": "ラストシーン",
+    "title": "ZUTTOMOTTO presents アオハル vol.14",
+    "venue": "大塚FUTURE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/aoharu_14",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/aoharu_14"
+      }
+    ]
   },
   {
     "date": "2026-09-29",
@@ -35,9 +858,39 @@
     "title": "HEROINES LEAGUE THE FINAL",
     "venue": "東京ガーデンシアター",
     "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/HEROINESLEAGUE-THEFINAL-260929",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/HEROINESLEAGUE-THEFINAL-260929"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-03",
+    "group": "iON!",
+    "title": "iON!初Zepp5大都市ツアー 『ON!VOYAGE!!』",
+    "venue": "15:30",
+    "area": "北海道・札幌",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/event/HEROINESLEAGUE-THEFINAL-260929"
+    "url": "https://ticketdive.com/event/iON-ONVOYAGE",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/iON-ONVOYAGE"
+      }
+    ]
   },
   {
     "date": "2026-10-03",
@@ -47,7 +900,53 @@
     "area": "北海道・札幌",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/event/iON-ONVOYAGE"
+    "url": "https://ticketdive.com/event/iON-ONVOYAGE",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/iON-ONVOYAGE"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-03",
+    "group": "夜光性アミューズ",
+    "title": "SPECIAL 5MAN LIVE WAVEFORM",
+    "venue": "WOMB LIVE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/WAVEFORM_1003",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/WAVEFORM_1003"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-04",
+    "group": "TENRIN",
+    "title": "HYPE IDOL！× 音飯会 in 東京タワー",
+    "venue": "東京タワー 南側駐車場",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/HYPE_otomeshi_1004",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/HYPE_otomeshi_1004"
+      }
+    ]
   },
   {
     "date": "2026-10-04",
@@ -57,7 +956,93 @@
     "area": "北海道・札幌",
     "status": "販売中",
     "source": "チケットぴあ",
-    "url": "https://w.pia.jp/t/onchan-heroinesfes/"
+    "url": "https://w.pia.jp/t/onchan-heroinesfes/",
+    "sources": [
+      {
+        "name": "チケットぴあ",
+        "url": "https://w.pia.jp/t/onchan-heroinesfes/"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-07",
+    "group": "MEGAFON",
+    "title": "衛星とカラテアPresents 「超 明星現象 2026」",
+    "venue": "Shibuya LOVEZ / Spotify O-EAST / WOMBLIVE / Spotify O-nest / Spotify O-Crest / VIDENT / LIVE STAGE GUILTY / Studio Freedom / THE GAME / RING / CHELSEA HOTEL / Star lounge / TAKEOFF7 / CHIC HALL",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/chomyojo_1007",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/chomyojo_1007"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-08",
+    "group": "Ill",
+    "title": "べロティカ主催『誘惑』",
+    "venue": "WOMBLIVE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/261008v",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/261008v"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-12",
+    "group": "Ill",
+    "title": "『東京絶対帝都』 Vol.108",
+    "venue": "WOMBLIVE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/261012t",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/261012t"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-17",
+    "group": "MEGAFON",
+    "title": "MEGAFON TOUR 2026 「START LINE」",
+    "venue": "15:30",
+    "area": "北海道・小樽",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/MEGAFON-Tour2026",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/MEGAFON-Tour2026"
+      }
+    ]
   },
   {
     "date": "2026-10-17",
@@ -67,7 +1052,53 @@
     "area": "北海道・小樽",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/event/MEGAFON-Tour2026"
+    "url": "https://ticketdive.com/event/MEGAFON-Tour2026",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/MEGAFON-Tour2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-24",
+    "group": "ドレスコード",
+    "title": "HYPE IDOL！Halloween",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/HYPE_Halloween_1024",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/HYPE_Halloween_1024"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-25",
+    "group": "夜光性アミューズ",
+    "title": "10/25(日) TOKYO GIRLS GIRLS Halloween!!",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/tgg__1025",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/tgg__1025"
+      }
+    ]
   },
   {
     "date": "2026-10-30",
@@ -77,7 +1108,33 @@
     "area": "埼玉",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/"
+    "url": "https://ticketdive.com/",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "group": "MEGAFON",
+    "title": "11/17(火) ちゅらまちゅり",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/chulamatyuri_1117",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/chulamatyuri_1117"
+      }
+    ]
   },
   {
     "date": "2026-11-17",
@@ -87,7 +1144,13 @@
     "area": "東京",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/"
+    "url": "https://ticketdive.com/",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/"
+      }
+    ]
   },
   {
     "date": "2026-12-07",
@@ -97,7 +1160,13 @@
     "area": "福岡",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/event/iON-ONVOYAGE"
+    "url": "https://ticketdive.com/event/iON-ONVOYAGE",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/iON-ONVOYAGE"
+      }
+    ]
   },
   {
     "date": "2026-12-10",
@@ -107,7 +1176,13 @@
     "area": "東京",
     "status": "要確認",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/artist/nonfic"
+    "url": "https://ticketdive.com/artist/nonfic",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/artist/nonfic"
+      }
+    ]
   },
   {
     "date": "2026-12-16",
@@ -117,6 +1192,32 @@
     "area": "東京",
     "status": "販売中",
     "source": "TicketDive",
-    "url": "https://ticketdive.com/"
+    "url": "https://ticketdive.com/",
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/"
+      }
+    ]
+  },
+  {
+    "date": "2026-12-16",
+    "group": "夜光性アミューズ",
+    "title": "12/16(水) ちゅらまちゅり",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/chulamatyuri_1216",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/chulamatyuri_1216"
+      }
+    ]
   }
 ]
