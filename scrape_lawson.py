@@ -9,16 +9,15 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# =========================
+# ==========================================
 # 設定
-# =========================
+# ==========================================
 
 OUTPUT = Path("events_lawson.json")
 
 START = date.today()
 END = date(2027, 1, 31)
 
-# 最初はHEROINES主要グループを対象にします
 ARTISTS = [
     "iLiFE!",
     "夜光性アミューズ",
@@ -29,37 +28,119 @@ ARTISTS = [
 
 BASE_URL = "https://l-tike.com"
 
+# GitHub Actionsからのアクセスを少し安定させる
 HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) "
-        "AppleWebKit/605.1.15 (KHTML, like Gecko) "
-        "Version/18.0 Mobile/15E148 Safari/604.1"
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/140.0.0.0 Safari/537.36"
     ),
-    "Accept-Language": "ja-JP,ja;q=0.9",
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;"
+        "q=0.9,image/avif,image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "ja,en-US;q=0.9,en;q=0.8",
+    "Referer": "https://l-tike.com/",
+    "Connection": "keep-alive",
 }
 
+CONNECT_TIMEOUT = 30
+READ_TIMEOUT = 90
 
-# =========================
-# 共通処理
-# =========================
+MAX_RETRIES = 3
 
-def clean_text(text):
-    if not text:
-        return ""
-    return re.sub(r"\s+", " ", text).strip()
 
+# ==========================================
+# Session
+# ==========================================
+
+session = requests.Session()
+session.headers.update(HEADERS)
+
+
+# ==========================================
+# HTTP取得
+# ==========================================
+
+def get_page(url):
+    """
+    ローチケのページを取得する。
+    タイムアウト・接続エラーがあった場合は自動リトライ。
+    """
+
+    for attempt in range(1, MAX_RETRIES + 1):
+
+        try:
+            print(
+                f"  ページ取得 {attempt}/{MAX_RETRIES}: "
+                f"{url}"
+            )
+
+            response = session.get(
+                url,
+                timeout=(CONNECT_TIMEOUT, READ_TIMEOUT),
+                allow_redirects=True,
+            )
+
+            response.raise_for_status()
+
+            print(
+                f"  取得成功: "
+                f"HTTP {response.status_code} / "
+                f"{len(response.text):,} bytes"
+            )
+
+            return response
+
+        except requests.exceptions.Timeout:
+            print(
+                f"  タイムアウトしました "
+                f"({attempt}/{MAX_RETRIES})"
+            )
+
+        except requests.exceptions.ConnectionError as e:
+            print(
+                f"  接続エラー "
+                f"({attempt}/{MAX_RETRIES}): {e}"
+            )
+
+        except requests.exceptions.HTTPError as e:
+            print(
+                f"  HTTPエラー "
+                f"({attempt}/{MAX_RETRIES}): {e}"
+            )
+
+        except requests.exceptions.RequestException as e:
+            print(
+                f"  リクエストエラー "
+                f"({attempt}/{MAX_RETRIES}): {e}"
+            )
+
+        if attempt < MAX_RETRIES:
+            wait_time = attempt * 8
+            print(f"  {wait_time}秒待って再試行します...")
+            time.sleep(wait_time)
+
+    print("  取得失敗: 最大リトライ回数に到達しました")
+    return None
+
+
+# ==========================================
+# 日付
+# ==========================================
 
 def parse_date(text):
     """
     ローチケの
+    2026/10/10
     2026/10/10(土)
-    2026/10/10(土)・2026/10/11(日)
-    などから最初の日付を取得
+    などから日付を取得。
     """
-    if not text:
-        return None
 
-    match = re.search(r"(20\d{2})[年/.-](\d{1,2})[月/.-](\d{1,2})", text)
+    match = re.search(
+        r"(20\d{2})[年/\-](\d{1,2})[月/\-](\d{1,2})",
+        text
+    )
 
     if not match:
         return None
@@ -74,248 +155,365 @@ def parse_date(text):
         return None
 
 
+# ==========================================
+# エリア判定
+# ==========================================
+
 def classify_area(text):
-    text = clean_text(text)
 
-    if "北海道" in text:
-        if any(word in text for word in ["札幌", "Zepp Sapporo", "ペニーレーン"]):
-            return "北海道・札幌"
-        return "北海道"
+    text = text.replace("　", " ")
 
-    if "東京都" in text or "東京" in text:
-        return "東京"
+    # 北海道
+    hokkaido_keywords = [
+        "北海道",
+        "札幌",
+        "函館",
+        "旭川",
+        "小樽",
+        "帯広",
+        "苫小牧",
+        "釧路",
+    ]
 
-    return ""
+    for keyword in hokkaido_keywords:
+        if keyword in text:
+            return "北海道・札幌" if "札幌" in text else "北海道"
+
+    # 東京
+    tokyo_keywords = [
+        "東京都",
+        "東京",
+        "渋谷",
+        "新宿",
+        "池袋",
+        "秋葉原",
+        "品川",
+        "台東区",
+        "千代田区",
+        "港区",
+        "中央区",
+        "新宿区",
+        "渋谷区",
+    ]
+
+    for keyword in tokyo_keywords:
+        if keyword in text:
+            return "東京"
+
+    return None
 
 
-def is_target_area(text):
-    return bool(classify_area(text))
-
+# ==========================================
+# ステータス
+# ==========================================
 
 def get_status(text):
-    text = clean_text(text)
 
-    if "受付終了" in text:
-        return "受付終了"
+    if "中止" in text:
+        return "中止"
 
-    if "予定枚数終了" in text:
-        return "予定枚数終了"
+    if "払戻" in text:
+        return "払戻"
+
+    if "本日発売" in text:
+        return "本日発売"
 
     if "発売中" in text:
         return "販売中"
 
-    if "本日発売" in text:
+    if "受付中" in text:
         return "販売中"
 
     if "発売前" in text:
         return "発売前"
 
-    if "受付中" in text:
-        return "販売中"
+    if "受付終了" in text:
+        return "受付終了"
+
+    if "販売終了" in text:
+        return "販売終了"
 
     return "販売情報あり"
 
 
+# ==========================================
+# イベントID
+# ==========================================
+
 def make_event_id(group, event_date, title, venue):
+
     raw = f"{group}-{event_date}-{title}-{venue}"
-    return re.sub(r"[^a-zA-Z0-9_-]", "-", raw).strip("-").lower()
+
+    return re.sub(
+        r"[^a-zA-Z0-9ぁ-んァ-ヶ一-龠]+",
+        "-",
+        raw,
+    ).strip("-").lower()
 
 
-# =========================
-# ローチケ検索
-# =========================
+# ==========================================
+# イベント解析
+# ==========================================
 
-def search_lawson(artist):
+def parse_search_page(html, artist, search_url):
 
-    url = f"{BASE_URL}/search/?keyword={quote(artist)}"
-
-    print(f"検索中: {artist}")
-    print(url)
-
-    try:
-        response = requests.get(
-            url,
-            headers=HEADERS,
-            timeout=30,
-        )
-        response.raise_for_status()
-    except Exception as e:
-        print(f"取得失敗: {artist} / {e}")
-        return []
-
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(html, "html.parser")
 
     events = []
 
-    # ローチケ内のリンクを確認
-    links = soup.find_all("a", href=True)
+    # ローチケの検索結果ではイベントタイトルが
+    # h3として表示されるケースが多いため、
+    # h3を起点にイベント情報を探します。
 
-    seen_urls = set()
+    headings = soup.find_all(["h2", "h3"])
 
-    for link in links:
+    for heading in headings:
 
-        href = link.get("href", "")
-        text = clean_text(link.get_text(" ", strip=True))
+        title = heading.get_text(
+            " ",
+            strip=True
+        )
 
-        if not href:
+        if not title:
             continue
 
-        # ローチケのイベント詳細らしきページ
-        if "/event/" not in href and "/l-tike/" not in href:
+        # 検索結果のタイトルとして使えそうか確認
+        if title in [
+            "絞り込み検索",
+            "販売方法",
+            "受付期間",
+            "申込/詳細",
+            "販売状況",
+        ]:
             continue
 
-        full_url = urljoin(BASE_URL, href)
+        # h3の親要素をイベントブロックとして扱う
+        block = heading.parent
 
-        if full_url in seen_urls:
+        if block is None:
             continue
 
-        seen_urls.add(full_url)
+        text = block.get_text(
+            " ",
+            strip=True
+        )
 
-        # 周辺の情報を取得
-        parent = link
-
-        for _ in range(5):
-            if parent.parent:
-                parent = parent.parent
-
-        block_text = clean_text(parent.get_text(" ", strip=True))
-
-        if len(block_text) < 20:
+        # 情報が少なすぎるものは除外
+        if len(text) < 20:
             continue
 
-        event_date = parse_date(block_text)
+        # 親だけでは情報が足りない場合、さらに上を見る
+        if "公演日" not in text:
 
-        if not event_date:
+            parent = block.parent
+
+            if parent is not None:
+
+                parent_text = parent.get_text(
+                    " ",
+                    strip=True
+                )
+
+                if len(parent_text) > len(text):
+                    text = parent_text
+                    block = parent
+
+        # 日付
+        event_date = parse_date(text)
+
+        if event_date is None:
             continue
 
+        # 期間外
         if event_date < START or event_date > END:
             continue
 
-        if not is_target_area(block_text):
-            continue
+        # エリア
+        area = classify_area(text)
 
-        area = classify_area(block_text)
-
-        # タイトル候補
-        title = text
-
-        if len(title) < 3:
-            continue
-
-        # 明らかな検索ページ内の不要リンクを除外
-        bad_words = [
-            "詳細はこちら",
-            "お申し込みはこちら",
-            "お気に入り",
-            "ログイン",
-            "会員登録",
-        ]
-
-        if title in bad_words:
+        if area is None:
             continue
 
         # 会場
         venue = ""
 
-        prefectures = [
-            "北海道",
-            "東京都",
-        ]
+        venue_match = re.search(
+            r"会場[:：]\s*(.+?)(?=\s+(?:販売方法|受付期間|申込/詳細)|$)",
+            text,
+        )
 
-        lines = [
-            clean_text(x)
-            for x in parent.stripped_strings
-        ]
+        if venue_match:
+            venue = venue_match.group(1).strip()
 
-        for line in lines:
-            if any(pref in line for pref in prefectures):
-                venue = line
-                break
+        # 会場が取れない場合は少し広く探す
+        if not venue:
 
-        status = get_status(block_text)
+            venue_match = re.search(
+                r"会場[:：]\s*(.{1,100})",
+                text,
+            )
 
-        event = {
-            "id": make_event_id(
-                artist,
-                event_date.isoformat(),
-                title,
-                venue,
-            ),
-            "date": event_date.isoformat(),
-            "group": artist,
-            "title": title,
-            "venue": venue,
-            "area": area,
-            "status": status,
-            "sources": [
-                {
-                    "name": "ローチケ",
-                    "url": full_url,
-                }
-            ],
-        }
+            if venue_match:
+                venue = venue_match.group(1).strip()
 
-        events.append(event)
+        # URL
+        event_url = search_url
+
+        link = block.find(
+            "a",
+            href=True
+        )
+
+        if link:
+
+            href = link.get("href", "").strip()
+
+            if href:
+                event_url = urljoin(
+                    BASE_URL,
+                    href
+                )
+
+        # ステータス
+        status = get_status(text)
+
+        # イベントID
+        event_id = make_event_id(
+            artist,
+            event_date.isoformat(),
+            title,
+            venue,
+        )
+
+        events.append(
+            {
+                "id": event_id,
+                "date": event_date.isoformat(),
+                "group": artist,
+                "title": title,
+                "venue": venue,
+                "area": area,
+                "status": status,
+                "source": "ローチケ",
+                "url": event_url,
+            }
+        )
 
     return events
 
 
-# =========================
-# 重複除去
-# =========================
+# ==========================================
+# アーティスト検索
+# ==========================================
 
-def remove_duplicates(events):
+def search_lawson(artist):
 
-    result = []
-    seen = set()
+    search_url = (
+        f"{BASE_URL}/search/"
+        f"?keyword={quote(artist)}"
+    )
+
+    print()
+    print("==============================")
+    print(f"検索中: {artist}")
+    print(search_url)
+    print("==============================")
+
+    response = get_page(search_url)
+
+    if response is None:
+        return None
+
+    events = parse_search_page(
+        response.text,
+        artist,
+        search_url,
+    )
+
+    # 重複除去
+    unique = {}
 
     for event in events:
+        unique[event["id"]] = event
 
-        key = (
-            event.get("group", ""),
-            event.get("date", ""),
-            event.get("title", ""),
-            event.get("venue", ""),
-        )
+    events = list(unique.values())
 
-        if key in seen:
-            continue
+    print(
+        f"{artist}: {len(events)}件"
+    )
 
-        seen.add(key)
-        result.append(event)
-
-    return result
+    return events
 
 
-# =========================
-# メイン処理
-# =========================
+# ==========================================
+# メイン
+# ==========================================
 
 def main():
 
     all_events = []
 
-    for artist in ARTISTS:
+    success_count = 0
+    failed_count = 0
 
-        try:
-            events = search_lawson(artist)
+    print()
+    print("================================")
+    print("ローチケ情報取得開始")
+    print("================================")
 
-            print(
-                f"{artist}: {len(events)}件"
-            )
+    # 最初にトップページへアクセスして
+    # SessionのCookie等を取得
+    print()
+    print("ローチケへ接続しています...")
 
+    warmup = get_page(BASE_URL)
+
+    if warmup is None:
+        print("トップページ取得に失敗しました。")
+        print("検索処理を続行します。")
+    else:
+        print("ローチケへの接続成功")
+
+    for index, artist in enumerate(ARTISTS):
+
+        events = search_lawson(artist)
+
+        if events is None:
+
+            failed_count += 1
+
+        else:
+
+            success_count += 1
             all_events.extend(events)
 
-        except Exception as e:
+        # ローチケへの連続アクセスを避ける
+        if index < len(ARTISTS) - 1:
+            wait_time = 5
             print(
-                f"{artist}でエラー: {e}"
+                f"{wait_time}秒待って次の検索へ..."
             )
+            time.sleep(wait_time)
 
-        # ローチケへのアクセス間隔
-        time.sleep(2)
+    # 全体の重複除去
+    unique_events = {}
 
-    all_events = remove_duplicates(all_events)
+    for event in all_events:
 
+        key = (
+            event.get("date", ""),
+            event.get("group", ""),
+            event.get("title", ""),
+            event.get("venue", ""),
+        )
+
+        unique_events[key] = event
+
+    all_events = list(
+        unique_events.values()
+    )
+
+    # 日付順
     all_events.sort(
         key=lambda x: (
             x.get("date", ""),
@@ -324,6 +522,39 @@ def main():
         )
     )
 
+    print()
+    print("================================")
+    print("ローチケ取得結果")
+    print("================================")
+    print(
+        f"検索成功: {success_count} / "
+        f"{len(ARTISTS)}"
+    )
+    print(
+        f"検索失敗: {failed_count} / "
+        f"{len(ARTISTS)}"
+    )
+    print(
+        f"取得イベント数: {len(all_events)}"
+    )
+
+    # すべての検索が失敗した場合は
+    # 空ファイルで上書きしない
+    if success_count == 0:
+
+        print()
+        print(
+            "⚠️ ローチケから1件も取得できませんでした。"
+        )
+        print(
+            "既存のevents_lawson.jsonは変更しません。"
+        )
+
+        raise RuntimeError(
+            "ローチケへの接続に失敗しました"
+        )
+
+    # 保存
     OUTPUT.write_text(
         json.dumps(
             all_events,
@@ -334,12 +565,18 @@ def main():
     )
 
     print()
-    print("==========================")
+    print("================================")
     print("ローチケ取得完了")
-    print(f"取得件数: {len(all_events)}")
-    print(f"保存先: {OUTPUT}")
-    print("==========================")
+    print(
+        f"取得件数: {len(all_events)}"
+    )
+    print(
+        f"保存先: {OUTPUT}"
+    )
+    print("================================")
 
+
+# ==========================================
 
 if __name__ == "__main__":
     main()
