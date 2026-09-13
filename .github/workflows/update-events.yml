@@ -27,7 +27,7 @@ jobs:
       - name: Collect TicketDive events
         run: python scrape_ticketdive.py
 
-        - name: Test Lawson connection
+      - name: Test Lawson connection
           run: |
             echo "=== DNS ==="
             getent ahosts l-tike.com || true
