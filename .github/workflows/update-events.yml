@@ -33,7 +33,7 @@ jobs:
           getent ahosts l-tike.com || true
 
           echo "=== IPv4 ==="
-          curl -4 -I --connect-timeout 10 --max-time 20 https://l-tike.com/
+          curl -4 --http1.1 -I --connect-timeout 10 --max-time 20 https://l-tike.com/
 
           echo "=== Connection test finished ==="
           exit 1
