@@ -28,12 +28,15 @@ jobs:
         run: python scrape_ticketdive.py
 
       - name: Test Lawson connection
-          run: |
-            echo "=== DNS ==="
-            getent ahosts l-tike.com || true
-            echo "=== IPv4 ==="
-            curl -4 -I --connect-timeout 10 --max-time 20 https://l-tike.com/ || true
-            exit 1
+        run: |
+          echo "=== DNS ==="
+          getent ahosts l-tike.com || true
+
+          echo "=== IPv4 ==="
+          curl -4 -I --connect-timeout 10 --max-time 20 https://l-tike.com/
+
+          echo "=== Connection test finished ==="
+          exit 1
       - name: Collect Lawson events
         run: python scrape_lawson.py
 
