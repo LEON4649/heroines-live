@@ -221,17 +221,30 @@ def get_title(soup):
 def main():
     print("HEROINES公式NEWSを検索中...")
 
-    article_urls = []
+        
+article_urls = []
+queries = []
 
-    queries = []
+months = [
+        "2026年9月",
+        "2026年10月",
+        "2026年11月",
+        "2026年12月",
+        "2027年1月",
+    ]
 
     for artist in ARTISTS:
-        queries.append(
-            f'site:heroines.jp/news/public/_/ "{artist}"'
-        )
+        for month in months:
+            queries.append(
+                f'site:heroines.jp/news/public/_/ "{artist}" "{month}"'
+            )
 
         queries.append(
             f'site:heroines.jp/news/public/_/ "{artist}" "札幌"'
+        )
+
+        queries.append(
+            f'site:heroines.jp/news/public/_/ "{artist}" "北海道"'
         )
 
         queries.append(
@@ -239,11 +252,23 @@ def main():
         )
 
     queries.append(
-        'site:heroines.jp/news/public/_/ "HEROINES" "札幌"'
+        'site:heroines.jp/news/public/_/ "2026年9月" "札幌"'
     )
 
     queries.append(
-        'site:heroines.jp/news/public/_/ "HEROINES" "東京"'
+        'site:heroines.jp/news/public/_/ "2026年10月" "札幌"'
+    )
+
+    queries.append(
+        'site:heroines.jp/news/public/_/ "2026年11月" "札幌"'
+    )
+
+    queries.append(
+        'site:heroines.jp/news/public/_/ "2026年12月" "札幌"'
+    )
+
+    queries.append(
+        'site:heroines.jp/news/public/_/ "2027年1月" "札幌"'
     )
 
     for query in queries:
