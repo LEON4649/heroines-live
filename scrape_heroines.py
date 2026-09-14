@@ -2,17 +2,11 @@ import json
 import re
 from datetime import date
 from pathlib import Path
-from urllib.parse import quote, urljoin, urlparse, parse_qs
+from urllib.parse import quote
 
 import requests
 from bs4 import BeautifulSoup
 
-
-BASE_URL = "https://heroines.jp"
-SEARCH_URL = "https://search.yahoo.co.jp/search"
-
-START_DATE = date.today()
-END_DATE = date(2027, 1, 31)
 
 ARTISTS = [
     "iLiFE!",
@@ -20,8 +14,10 @@ ARTISTS = [
     "夜光性アミューズ",
     "iON!",
     "MEGAFON",
-    "HEROINES"
 ]
+
+START_DATE = date.today()
+END_DATE = date(2027, 1, 31)
 
 HEADERS = {
     "User-Agent": (
@@ -32,123 +28,14 @@ HEADERS = {
 }
 
 
-def fetch(url, timeout=30):
+def search_yahoo(query):
+    url = (
+        "https://search.yahoo.co.jp/search?p="
+        + quote(query)
+    )
+
     response = requests.get(
         url,
-        headers=HEADERS,
-        timeout=timeout
-    )
-    response.raise_for_status()
-    return response.text
-
-
-def clean(text):
-    return re.sub(r"\s+", " ", text).strip()
-
-
-def parse_date_string(y, m, d):
-    try:
-        return date(int(y), int(m), int(d))
-    except ValueError:
-        return None
-
-
-def find_dates(text):
-    patterns = [
-        r"(20\d{2})[./年-](\d{1,2})[./月-](\d{1,2})",
-        r"(20\d{2})年(\d{1,2})月(\d{1,2})日",
-    ]
-
-    found = []
-
-    for pattern in patterns:
-        for match in re.finditer(pattern, text):
-            d = parse_date_string(
-                match.group(1),
-                match.group(2),
-                match.group(3)
-            )
-
-            if d and START_DATE <= d <= END_DATE:
-                if d not in found:
-                    found.append(d)
-
-    return sorted(found)
-
-
-def classify_area(text):
-    if "札幌" in text or "北海道" in text:
-        return "北海道・札幌"
-
-    if "小樽" in text:
-        return "北海道・小樽"
-
-    if "東京" in text or "渋谷" in text or "新宿" in text:
-        return "東京"
-
-    return ""
-
-
-def guess_venue(text):
-    venue_patterns = [
-        r"@\s*([^\n]+)",
-        r"会場\s*[:：]\s*([^\n]+)",
-        r"会場\s+([^\n]+)",
-    ]
-
-    for pattern in venue_patterns:
-        match = re.search(pattern, text)
-
-        if match:
-            venue = clean(match.group(1))
-
-            venue = re.split(
-                r"\b(?:OPEN|START|開場|開演)\b",
-                venue
-            )[0]
-
-            venue = venue.strip(" 　@")
-
-            if len(venue) <= 100:
-                return venue
-
-    known_venues = [
-        "Zepp Sapporo",
-        "PENNY LANE24",
-        "小樽GOLD STONE",
-        "Zepp Haneda",
-        "Zepp DiverCity",
-        "KT Zepp Yokohama",
-        "Ebisu Garden Hall",
-        "Kanadevia Hall",
-        "幕張メッセ",
-    ]
-
-    for venue in known_venues:
-        if venue in text:
-            return venue
-
-    return ""
-
-
-def guess_group(title, text):
-    combined = title + " " + text
-
-    for artist in ARTISTS:
-        if artist in combined:
-            return artist
-
-    return "HEROINES"
-
-
-def search_yahoo(query):
-    params = {
-        "p": query
-    }
-
-    response = requests.get(
-        SEARCH_URL,
-        params=params,
         headers=HEADERS,
         timeout=30
     )
@@ -168,52 +55,100 @@ def search_yahoo(query):
         if "heroines.jp/news/public/" not in href:
             continue
 
-        if href.startswith("/"):
-            href = urljoin(
-                "https://search.yahoo.co.jp",
-                href
-            )
-
-        parsed = urlparse(href)
-
-        if parsed.netloc == "search.yahoo.co.jp":
-            qs = parse_qs(parsed.query)
-
-            if "url" in qs:
-                href = qs["url"][0]
-
-        if href.startswith(BASE_URL):
-            if href not in urls:
-                urls.append(href)
+        if href not in urls:
+            urls.append(href)
 
     return urls
 
 
+def clean_text(text):
+    return re.sub(
+        r"\s+",
+        " ",
+        text
+    ).strip()
+
+
+def find_event_date(text):
+    patterns = [
+        r"(2026)[./年-](9|10|11|12)[./月-](\d{1,2})",
+        r"(2027)[./年-](1)[./月-](\d{1,2})",
+    ]
+
+    for pattern in patterns:
+        matches = re.findall(
+            pattern,
+            text
+        )
+
+        for match in matches:
+            try:
+                d = date(
+                    int(match[0]),
+                    int(match[1]),
+                    int(match[2])
+                )
+
+                if START_DATE <= d <= END_DATE:
+                    return d
+
+            except ValueError:
+                pass
+
+    return None
+
+
+def get_area(text):
+    if "札幌" in text or "北海道" in text:
+        return "北海道・札幌"
+
+    if "小樽" in text:
+        return "北海道・小樽"
+
+    if "東京" in text or "渋谷" in text or "新宿" in text:
+        return "東京"
+
+    return ""
+
+
+def get_venue(text):
+    patterns = [
+        r"会場[:：]\s*([^\s]+)",
+        r"会場\s+([^\s]+)",
+        r"＠\s*([^\s]+)",
+        r"@\s*([^\s]+)",
+    ]
+
+    for pattern in patterns:
+        match = re.search(
+            pattern,
+            text
+        )
+
+        if match:
+            return match.group(1)
+
+    return ""
+
+
 def get_title(soup):
-    h1 = soup.find("h1")
+    title = soup.find("h1")
 
-    if h1:
-        title = clean(
-            h1.get_text(" ", strip=True)
+    if title:
+        return clean_text(
+            title.get_text(
+                " ",
+                strip=True
+            )
         )
 
-        if title and title != "NEWS":
-            return title
-
-    title_tag = soup.find("title")
-
-    if title_tag:
-        title = clean(
-            title_tag.get_text(" ", strip=True)
+    if soup.title:
+        return clean_text(
+            soup.title.get_text(
+                " ",
+                strip=True
+            )
         )
-
-        title = re.sub(
-            r"\s*\|\s*HEROINES.*$",
-            "",
-            title
-        )
-
-        return title
 
     return "HEROINES EVENT"
 
@@ -221,74 +156,42 @@ def get_title(soup):
 def main():
     print("HEROINES公式NEWSを検索中...")
 
-        
-article_urls = []
-queries = []
+    article_urls = []
 
-months = [
-        "2026年9月",
-        "2026年10月",
-        "2026年11月",
-        "2026年12月",
-        "2027年1月",
-    ]
+    for artist in ARTISTS:
+        queries = [
+            f'site:heroines.jp/news/public/_/ "{artist}"',
+            f'site:heroines.jp/news/public/_/ "{artist}" "札幌"',
+            f'site:heroines.jp/news/public/_/ "{artist}" "東京"',
+        ]
 
-for artist in ARTISTS:
-        for month in months:
-            queries.append(
-                f'site:heroines.jp/news/public/_/ "{artist}" "{month}"'
-            )
+        for query in queries:
+            try:
+                print()
+                print("検索:", query)
 
-        queries.append(
-            f'site:heroines.jp/news/public/_/ "{artist}" "札幌"'
-        )
+                urls = search_yahoo(query)
 
-        queries.append(
-            f'site:heroines.jp/news/public/_/ "{artist}" "北海道"'
-        )
+                print(
+                    "記事:",
+                    len(urls)
+                )
 
-        queries.append(
-            f'site:heroines.jp/news/public/_/ "{artist}" "東京"'
-        )
+                for url in urls:
+                    if url not in article_urls:
+                        article_urls.append(url)
 
-    queries.append(
-        'site:heroines.jp/news/public/_/ "2026年9月" "札幌"'
-    )
-
-    queries.append(
-        'site:heroines.jp/news/public/_/ "2026年10月" "札幌"'
-    )
-
-    queries.append(
-        'site:heroines.jp/news/public/_/ "2026年11月" "札幌"'
-    )
-
-    queries.append(
-        'site:heroines.jp/news/public/_/ "2026年12月" "札幌"'
-    )
-
-    queries.append(
-        'site:heroines.jp/news/public/_/ "2027年1月" "札幌"'
-    )
-
-    for query in queries:
-        try:
-            print()
-            print("検索:", query)
-
-            urls = search_yahoo(query)
-
-            print("記事:", len(urls))
-
-            for url in urls:
-                if url not in article_urls:
-                    article_urls.append(url)
-
-        except Exception as e:
-            print("検索失敗:", e)
+            except Exception as e:
+                print(
+                    "検索失敗:",
+                    e
+                )
 
     print()
-    print("公式NEWS記事候補:", len(article_urls))
+    print(
+        "公式NEWS記事候補:",
+        len(article_urls)
+    )
 
     events = []
 
@@ -297,89 +200,69 @@ for artist in ARTISTS:
             print()
             print("取得:", url)
 
-            html = fetch(url)
+            response = requests.get(
+                url,
+                headers=HEADERS,
+                timeout=30
+            )
+
+            response.raise_for_status()
 
             soup = BeautifulSoup(
-                html,
+                response.text,
                 "html.parser"
             )
 
-            title = get_title(soup)
-
-            text = soup.get_text(
-                "\n",
-                strip=True
+            text = clean_text(
+                soup.get_text(
+                    " ",
+                    strip=True
+                )
             )
 
-            text = re.sub(
-                r"[ \t]+",
-                " ",
-                text
-            )
+            event_date = find_event_date(text)
 
-            dates = find_dates(text)
-
-            if not dates:
+            if not event_date:
                 print("未来の公演日なし")
                 continue
 
-            group = guess_group(
-                title,
-                text
-            )
+            title = get_title(soup)
+            area = get_area(text)
+            venue = get_venue(text)
 
-            area = classify_area(text)
+            event = {
+                "date": event_date.isoformat(),
+                "group": "HEROINES",
+                "title": title,
+                "venue": venue,
+                "area": area,
+                "status": "",
+                "source": "HEROINES公式サイト",
+                "url": url
+            }
 
-            venue = guess_venue(text)
+            duplicate = False
 
-            for event_date in dates:
-                events.append({
-                    "date": event_date.isoformat(),
-                    "group": group,
-                    "title": title,
-                    "venue": venue,
-                    "area": area,
-                    "status": "",
-                    "source": "HEROINES公式サイト",
-                    "url": url
-                })
+            for old in events:
+                if (
+                    old["date"] == event["date"]
+                    and old["title"] == event["title"]
+                    and old["url"] == event["url"]
+                ):
+                    duplicate = True
+                    break
 
-                print(
-                    "イベント:",
-                    event_date.isoformat(),
-                    group,
-                    title,
-                    venue,
-                    area
-                )
+            if not duplicate:
+                events.append(event)
 
         except Exception as e:
             print(
-                "記事取得失敗:",
-                url,
+                "取得失敗:",
                 e
             )
 
-    unique = {}
-
-    for event in events:
-        key = (
-            event["date"],
-            event["group"],
-            event["title"],
-            event["venue"]
-        )
-
-        unique[key] = event
-
-    events = list(unique.values())
-
     events.sort(
-        key=lambda x: (
-            x["date"],
-            x["group"],
-            x["title"]
-        )
+        key=lambda x: x["date"]
     )
 
     output = Path(
