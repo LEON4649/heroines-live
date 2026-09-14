@@ -27,16 +27,6 @@ jobs:
       - name: Collect TicketDive events
         run: python scrape_ticketdive.py
 
-      - name: Test Lawson connection
-        run: |
-          echo "=== DNS ==="
-          getent ahosts l-tike.com || true
-
-          echo "=== IPv4 ==="
-          curl -4 --http1.1 -I --connect-timeout 10 --max-time 20 https://l-tike.com/
-
-          echo "=== Connection test finished ==="
-          exit 1
       - name: Collect Lawson events
         run: python scrape_lawson.py
 
