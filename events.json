@@ -341,7 +341,7 @@
     "title": "霞あげは後日特典会",
     "venue": "15:30",
     "area": "東京",
-    "status": "販売中",
+    "status": "受付終了",
     "source": "TicketDive",
     "url": "https://ticketdive.com/event/ageha_gojitu",
     "types": [
@@ -361,7 +361,7 @@
     "title": "霞あげは後日特典会",
     "venue": "19:00",
     "area": "東京",
-    "status": "販売中",
+    "status": "受付終了",
     "source": "TicketDive",
     "url": "https://ticketdive.com/event/ageha_gojitu",
     "types": [
@@ -873,6 +873,26 @@
     ]
   },
   {
+    "date": "2026-09-30",
+    "group": "のんふぃく！",
+    "title": "HEROINES FES AUTUMN",
+    "venue": "豊洲PIT",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/HEROINESFES-260930",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/HEROINESFES-260930"
+      }
+    ]
+  },
+  {
     "date": "2026-10-03",
     "group": "iON!",
     "title": "iON!初Zepp5大都市ツアー 『ON!VOYAGE!!』",
@@ -1097,6 +1117,22 @@
       {
         "name": "TicketDive",
         "url": "https://ticketdive.com/event/tgg__1025"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-30",
+    "group": "のんふぃく！",
+    "title": "“のんふぃく!”の検索結果",
+    "venue": "うみかぜ公園(神奈川県)",
+    "area": "北海道",
+    "status": "発売中",
+    "source": "ローチケ",
+    "url": "https://l-tike.com/search/?keyword=%E3%81%AE%E3%82%93%E3%81%B5%E3%81%83%E3%81%8F%EF%BC%81",
+    "sources": [
+      {
+        "name": "ローチケ",
+        "url": "https://l-tike.com/search/?keyword=%E3%81%AE%E3%82%93%E3%81%B5%E3%81%83%E3%81%8F%EF%BC%81"
       }
     ]
   },
