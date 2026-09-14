@@ -1,0 +1,28 @@
+name: HEROINES Official Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run HEROINES scraper
+        run: python scrape_heroines.py
+
+      - name: Show result
+        run: |
+          echo "=== events_heroines.json ==="
+          cat events_heroines.json
