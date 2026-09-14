@@ -233,7 +233,7 @@ months = [
         "2027年1月",
     ]
 
-    for artist in ARTISTS:
+for artist in ARTISTS:
         for month in months:
             queries.append(
                 f'site:heroines.jp/news/public/_/ "{artist}" "{month}"'
