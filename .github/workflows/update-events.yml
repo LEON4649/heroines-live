@@ -1,4 +1,4 @@
-name: Lawson Proxy Test
+name: Lawson Search Test
 
 on:
   workflow_dispatch:
@@ -8,24 +8,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Test AllOrigins
+      - name: Test DuckDuckGo
         run: |
           python - <<'PY'
           import requests
           import urllib.parse
+          from bs4 import BeautifulSoup
 
-          target = "https://l-tike.com/artist/000000000915501/"
-          proxy = "https://api.allorigins.win/raw?url=" + urllib.parse.quote(target, safe="")
+          query = 'site:l-tike.com "iLiFE!"'
+          url = "https://html.duckduckgo.com/html/?q=" + urllib.parse.quote(query)
 
-          print("Target:", target)
-          print("Proxy:", proxy)
+          print("SEARCH:", query)
+          print("URL:", url)
 
-          r = requests.get(proxy, timeout=30)
+          r = requests.get(
+              url,
+              headers={
+                  "User-Agent": "Mozilla/5.0"
+              },
+              timeout=30
+          )
 
           print("HTTP:", r.status_code)
           print("LENGTH:", len(r.text))
-          print("CONTENT:")
-          print(r.text[:1000])
+
+          soup = BeautifulSoup(r.text, "html.parser")
+
+          results = soup.select(".result")
+
+          print("RESULTS:", len(results))
+
+          for i, result in enumerate(results[:10], 1):
+              title = result.select_one(".result__title")
+              link = result.select_one(".result__a")
+
+              print()
+              print("RESULT", i)
+
+              if title:
+                  print("TITLE:", title.get_text(" ", strip=True))
+
+              if link:
+                  print("LINK:", link.get("href"))
 
           r.raise_for_status()
           PY
