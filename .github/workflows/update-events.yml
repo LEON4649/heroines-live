@@ -1,42 +1,31 @@
-name: Update HEROINES LIVE
+name: Lawson Proxy Test
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  update:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4
-
-      - name: Collect TicketDive events
-        run: python scrape_ticketdive.py
-
-      - name: Collect Lawson events
-        run: python scrape_lawson.py
-
-      - name: Merge events
-        run: python merge_events.py
-
-      - name: Commit updated events
+      - name: Test AllOrigins
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add events.json events_lawson.json
-          git diff --cached --quiet || git commit -m "Update live events"
-          git push
+          python - <<'PY'
+          import requests
+          import urllib.parse
+
+          target = "https://l-tike.com/artist/000000000915501/"
+          proxy = "https://api.allorigins.win/raw?url=" + urllib.parse.quote(target, safe="")
+
+          print("Target:", target)
+          print("Proxy:", proxy)
+
+          r = requests.get(proxy, timeout=30)
+
+          print("HTTP:", r.status_code)
+          print("LENGTH:", len(r.text))
+          print("CONTENT:")
+          print(r.text[:1000])
+
+          r.raise_for_status()
+          PY
