@@ -1,4 +1,4 @@
-name: HEROINES Official Test
+name: HEROINES Official Site Test
 
 on:
   workflow_dispatch:
@@ -8,21 +8,43 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4
-
-      - name: Run HEROINES scraper
-        run: python scrape_heroines.py
-
-      - name: Show result
+      - name: Test HEROINES official site
         run: |
-          echo "=== events_heroines.json ==="
-          cat events_heroines.json
+          python - <<'PY'
+          import requests
+
+          urls = [
+              "https://heroines.jp/",
+              "https://heroines.jp/news/public/_/uqkm8rvzhnseedmq.html",
+          ]
+
+          headers = {
+              "User-Agent": "Mozilla/5.0"
+          }
+
+          for url in urls:
+              print()
+              print("================================")
+              print("TEST:", url)
+              print("================================")
+
+              try:
+                  r = requests.get(
+                      url,
+                      headers=headers,
+                      timeout=30
+                  )
+
+                  print("HTTP:", r.status_code)
+                  print("LENGTH:", len(r.text))
+                  print("OK")
+
+                  r.raise_for_status()
+
+              except Exception as e:
+                  print("ERROR:", e)
+                  raise
+
+          print()
+          print("HEROINES公式サイトへの接続テスト成功！")
+          PY
