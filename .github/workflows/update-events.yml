@@ -1,57 +1,44 @@
-name: Lawson Search Test
+
+name: Update HEROINES LIVE
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions:
+  contents: write
 
 jobs:
-  test:
+  update-events:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: Install dependencies
-        run: pip install beautifulsoup4 requests
-      - name: Test DuckDuckGo
+        run: pip install requests beautifulsoup4
+
+      - name: Collect TicketDive events
+        run: python scrape_ticketdive.py
+
+      - name: Merge events
+        run: python merge_events.py
+
+      - name: Save updated events
         run: |
-          python - <<'PY'
-          import requests
-          import urllib.parse
-          from bs4 import BeautifulSoup
-
-          query = 'site:l-tike.com "iLiFE!"'
-          url = "https://html.duckduckgo.com/html/?q=" + urllib.parse.quote(query)
-
-          print("SEARCH:", query)
-          print("URL:", url)
-
-          r = requests.get(
-              url,
-              headers={
-                  "User-Agent": "Mozilla/5.0"
-              },
-              timeout=30
-          )
-
-          print("HTTP:", r.status_code)
-          print("LENGTH:", len(r.text))
-
-          soup = BeautifulSoup(r.text, "html.parser")
-
-          results = soup.select(".result")
-
-          print("RESULTS:", len(results))
-
-          for i, result in enumerate(results[:10], 1):
-              title = result.select_one(".result__title")
-              link = result.select_one(".result__a")
-
-              print()
-              print("RESULT", i)
-
-              if title:
-                  print("TITLE:", title.get_text(" ", strip=True))
-
-              if link:
-                  print("LINK:", link.get("href"))
-
-          r.raise_for_status()
-          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add events.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update live events"
+            git push
+          else
+            echo "No changes to save"
+          fi
