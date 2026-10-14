@@ -2,9 +2,12 @@ import json
 from pathlib import Path
 
 
+
 TICKETDIVE_FILE = Path("events.json")
 LAWSON_FILE = Path("events_lawson.json")
+HEROINES_FILE = Path("events_heroines.json")
 OUTPUT_FILE = Path("events.json")
+
 
 
 def load_json(path):
@@ -109,10 +112,10 @@ def merge_events():
 
     ticketdive_events = load_json(TICKETDIVE_FILE)
     lawson_events = load_json(LAWSON_FILE)
-
+    heroines_events = load_json(HEROINES_FILE)
     print(f"TicketDive: {len(ticketdive_events)}件")
     print(f"ローチケ: {len(lawson_events)}件")
-
+    print(f"HEROINES公式サイト: {len(heroines_events)}件")
     merged = {}
 
     # TicketDive
@@ -144,6 +147,21 @@ def merge_events():
                 merged[key].get("sources", []),
                 event.get("sources", []),
             )
+
+        # HEROINES公式サイト
+        for event in heroines_events:
+            event = normalize_event(event)
+
+            key = event_key(event)
+
+            if key not in merged:
+                merged[key] = event
+            else:
+                merged[key]["sources"] = merge_sources(
+                    merged[key].get("sources", []),
+                    event.get("sources", []),
+                )
+
 
     result = list(merged.values())
 
