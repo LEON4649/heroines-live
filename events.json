@@ -1045,6 +1045,46 @@
     ]
   },
   {
+    "date": "2026-10-14",
+    "group": "夜光性アミューズ",
+    "title": "COAI BIRTHDAYLIVE2026",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/coai_birthday2026",
+    "types": [
+      "birthday"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/coai_birthday2026"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-15",
+    "group": "MEGAFON",
+    "title": "小晴のか生誕祭『今日ものかがいちばんスキだよね？♡』",
+    "venue": "ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/noka_omedetou",
+    "types": [
+      "birthday"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/noka_omedetou"
+      }
+    ]
+  },
+  {
     "date": "2026-10-17",
     "group": "MEGAFON",
     "title": "MEGAFON TOUR 2026 「START LINE」",
@@ -1081,8 +1121,168 @@
     ]
   },
   {
+    "date": "2026-10-17",
+    "group": "chuLa",
+    "title": "HELLOWEEN LIVE",
+    "venue": "渋谷音楽堂",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/XzfftwW6YIlLP7RQpbbG",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/XzfftwW6YIlLP7RQpbbG"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-20",
+    "group": "Ill",
+    "title": "HEROINES DARKNESS",
+    "venue": "Spotify O-WEST",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/DARKNESS",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/DARKNESS"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-21",
+    "group": "TENRIN",
+    "title": "のもあちゃちゃ生誕祭 第7話 とっとこラッキー7！ドパドパドパーッ ~ ちゃちゃを愛でたい7 ~",
+    "venue": "Veats SHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/chacha_BDL_7",
+    "types": [
+      "birthday"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/chacha_BDL_7"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-21",
+    "group": "iLiFE!",
+    "title": "iLIVE! HALLOWEEN",
+    "venue": "豊洲PIT",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ilive1021",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ilive1021"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-22",
+    "group": "Ill",
+    "title": "マーキュロ主催『グラン・ギニュルー』Vol.34",
+    "venue": "Veats SHIBUYA",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/261022m",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/261022m"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-23",
+    "group": "AdamLilith",
+    "title": "IDOL STORM",
+    "venue": "WOMB LIVE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/storm1023",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/storm1023"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-23",
+    "group": "iON!",
+    "title": "透明くりあ生誕祭『夢幻泡影』",
+    "venue": "白金高輪 SELENE b2",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/NGzZphAExxQEXT7a4iCx",
+    "types": [
+      "birthday"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/NGzZphAExxQEXT7a4iCx"
+      }
+    ]
+  },
+  {
     "date": "2026-10-24",
-    "group": "ドレスコード",
+    "group": "TENRIN",
+    "title": "TENRIN HALLOWEEN",
+    "venue": "新木場FACTORY",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/T_Hallowween",
+    "types": [
+      "festival"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/T_Hallowween"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-24",
+    "group": "ドレスコード / MEGAFON",
     "title": "HYPE IDOL！Halloween",
     "venue": "ステラボール",
     "area": "東京",
@@ -1097,6 +1297,26 @@
       {
         "name": "TicketDive",
         "url": "https://ticketdive.com/event/HYPE_Halloween_1024"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-25",
+    "group": "ドレスコード",
+    "title": "りるむと魔法のおとぎ話Ⅱ -The 20th Magic-",
+    "venue": "恵比寿ガーデンルーム",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/rirumu_birthday2026",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/rirumu_birthday2026"
       }
     ]
   },
@@ -1117,6 +1337,26 @@
       {
         "name": "TicketDive",
         "url": "https://ticketdive.com/event/tgg__1025"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-26",
+    "group": "iLiFE!",
+    "title": "iLiVE! TOUR TOKYO",
+    "venue": "Zepp Haneda",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ilive-261026",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ilive-261026"
       }
     ]
   },
@@ -1153,6 +1393,26 @@
     ]
   },
   {
+    "date": "2026-11-07",
+    "group": "chuLa",
+    "title": "ちゅらとトキメキ♡お届けツアーTOKYO",
+    "venue": "Spotify O-WEST",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/XCo2SUGZboMNLF22vPta",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/XCo2SUGZboMNLF22vPta"
+      }
+    ]
+  },
+  {
     "date": "2026-11-17",
     "group": "MEGAFON",
     "title": "11/17(火) ちゅらまちゅり",
@@ -1185,6 +1445,86 @@
       {
         "name": "TicketDive",
         "url": "https://ticketdive.com/"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "group": "のんふぃく！",
+    "title": "四天轟臨",
+    "venue": "品川ステラボール",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/Shiten_Gourin",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/Shiten_Gourin"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-22",
+    "group": "夜光性アミューズ",
+    "title": "夜光性アミューズWINTER TOUR ’26-’27 「NIGHT CRUISE」",
+    "venue": "KYOTO MUSE / 名古屋ReNY limited / NAGANO CLUB JUNK BOX / BEAT STATION / 柏PALOOZA / 金沢AZ / 仙台darwin / 沖縄桜坂セントラル / BIGCAT / 札幌PENNY LANE24",
+    "area": "北海道・札幌",
+    "status": "販売中",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/NIGHTCRUISE26-27",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/NIGHTCRUISE26-27"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-23",
+    "group": "chuLa",
+    "title": "ちゅらとトキメキ♡お届けツアー SAPPORO",
+    "venue": "Sound Lab mole",
+    "area": "北海道",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/Hm16ZpMJRCceYTKJFaUt",
+    "types": [
+      "tour"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/Hm16ZpMJRCceYTKJFaUt"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-24",
+    "group": "TENRIN",
+    "title": "あげはプロデュース公演",
+    "venue": "SHIBUYA WOMB LIVE",
+    "area": "東京",
+    "status": "受付終了",
+    "source": "TicketDive",
+    "url": "https://ticketdive.com/event/ageha_p",
+    "types": [
+      "other"
+    ],
+    "auto": true,
+    "sources": [
+      {
+        "name": "TicketDive",
+        "url": "https://ticketdive.com/event/ageha_p"
       }
     ]
   },
