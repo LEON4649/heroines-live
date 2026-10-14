@@ -24,7 +24,8 @@ jobs:
 
       - name: Install dependencies
         run: pip install requests beautifulsoup4
-
+        - name: Collect HEROINES official events
+          run: python scrape_heroines.py
       - name: Collect TicketDive events
         run: python scrape_ticketdive.py
 
